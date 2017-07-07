@@ -1,0 +1,27 @@
+<resources>
+    <!-- App name -->
+    <string name="app_name">Calculator</string>
+
+    <!-- Numbers and decimal for buttons -->
+    <string name="calculator_button_value_zero">0</string>
+    <string name="calculator_button_value_one">1</string>
+    <string name="calculator_button_value_two">2</string>
+    <string name="calculator_button_value_three">3</string>
+    <string name="calculator_button_value_four">4</string>
+    <string name="calculator_button_value_five">5</string>
+    <string name="calculator_button_value_six">6</string>
+    <string name="calculator_button_value_seven">7</string>
+    <string name="calculator_button_value_eight">8</string>
+    <string name="calculator_button_value_nine">9</string>
+    <string name="calculator_button_decimal">.</string>
+
+    <!-- Operators for buttons -->
+    <string name="calculator_button_operator_add">+</string>
+    <string name="calculator_button_operator_multiply">×</string>
+    <string name="calculator_button_operator_divide">÷</string>
+    <string name="calculator_button_operator_subtract">-</string>
+    <string name="calculator_button_operator_equals">=</string>
+    <string name="calculator_button_operator_clear">CLR</string>
+    <string name="calculator_button_operator_delete">DEL</string>
+
+</resources>

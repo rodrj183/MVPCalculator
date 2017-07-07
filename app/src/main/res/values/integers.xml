@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Calculator button layout weight -->
+    <integer name="baseCalculatorButtonLayoutWeight">1</integer>
+
+    <!-- Grid layout row count and column count -->
+    <integer name="calculatorButtonGridLayoutRowCount">4</integer>
+    <integer name="calculatorButtonGridLayoutColumnCount">5</integer>
+</resources>

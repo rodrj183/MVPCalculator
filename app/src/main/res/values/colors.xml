@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App theme colors -->
+    <color name="colorPrimary">#FAFAFA</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- Calculator button and text colors -->
+    <color name="colorCalculatorButtonText">#FFFFFF</color>
+    <color name="colorCalculatorNumericButton">#424242</color>
+    <color name="colorCalculatorOperatorButton">#616161</color>
+
+</resources>

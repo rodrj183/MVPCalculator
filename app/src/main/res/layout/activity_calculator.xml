@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <GridLayout
+        style="@style/CalculatorButtonsGrid"
+        android:id="@+id/gridlayout_calculator_buttons" >
+
+        <Button
+            style="@style/NumericButton"
+            android:id="@+id/button_number_seven"
+            android:text="@string/calculator_button_value_seven" />
+
+        <Button
+            style="@style/NumericButton"
+            android:id="@+id/button_number_eight"
+            android:text="@string/calculator_button_value_eight" />
+
+        <Button
+            style="@style/NumericButton"
+            android:id="@+id/button_number_nine"
+            android:text="@string/calculator_button_value_nine" />
+
+        <Button
+            style="@style/OperatorButton"
+            android:id="@+id/button_divide"
+            android:text="@string/calculator_button_operator_divide" />
+
+        <Button
+            style="@style/OperatorButton"
+            android:id="@+id/button_del_clear"
+            android:text="@string/calculator_button_operator_delete" />
+
+        <Button
+            style="@style/NumericButton"
+            android:id="@+id/button_number_four"
+            android:text="@string/calculator_button_value_four" />
+
+        <Button
+            style="@style/NumericButton"
+            android:id="@+id/button_number_five"
+            android:text="@string/calculator_button_value_five" />
+
+        <Button
+            style="@style/NumericButton"
+            android:id="@+id/button_number_six"
+            android:text="@string/calculator_button_value_six" />
+
+        <Button
+            style="@style/OperatorButton"
+            android:id="@+id/button_multiply"
+            android:text="@string/calculator_button_operator_multiply" />
+
+        <Button
+            style="@style/OperatorButton"
+            android:clickable="false" />
+
+        <Button
+            style="@style/NumericButton"
+            android:id="@+id/button_number_one"
+            android:text="@string/calculator_button_value_one" />
+
+        <Button
+            style="@style/NumericButton"
+            android:id="@+id/button_number_two"
+            android:text="@string/calculator_button_value_two" />
+
+        <Button
+            style="@style/NumericButton"
+            android:id="@+id/button_number_three"
+            android:text="@string/calculator_button_value_three" />
+
+        <Button
+            style="@style/OperatorButton"
+            android:id="@+id/button_subtract"
+            android:text="@string/calculator_button_operator_subtract" />
+
+        <Button
+            style="@style/OperatorButton"
+            android:clickable="false" />
+
+        <Button
+            style="@style/NumericButton"
+            android:id="@+id/button_decimal"
+            android:text="@string/calculator_button_decimal" />
+
+        <Button
+            style="@style/NumericButton"
+            android:id="@+id/button_number_zero"
+            android:text="@string/calculator_button_value_zero" />
+
+        <Button
+            style="@style/NumericButton"
+            android:clickable="false" />
+
+        <Button
+            style="@style/OperatorButton"
+            android:id="@+id/button_addition"
+            android:text="@string/calculator_button_operator_add" />
+
+        <Button
+            style="@style/OperatorButton"
+            android:id="@+id/button_equals"
+            android:text="@string/calculator_button_operator_equals"/>
+
+    </GridLayout>
+
+</RelativeLayout>

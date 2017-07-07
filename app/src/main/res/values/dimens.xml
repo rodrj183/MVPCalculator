@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Calculator button dimensions -->
+    <dimen name="baseCalculatorButtonTextSize">30sp</dimen>
+    <dimen name="baseCalculatorButtonLayoutHeight">80dp</dimen>
+    <dimen name="baseCalculatorButtonLayoutWidth">0dp</dimen>
+
+</resources>
