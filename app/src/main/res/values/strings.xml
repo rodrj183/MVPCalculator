@@ -22,5 +22,6 @@
     <string name="calculator_button_operator_subtract">-</string>
     <string name="calculator_button_operator_equals">=</string>
     <string name="calculator_button_operator_delete">DEL</string>
+    <string name="calculator_button_operator_clear">C</string>
 
 </resources>

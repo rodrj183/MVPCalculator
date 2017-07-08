@@ -49,7 +49,8 @@
             android:text="@string/calculator_button_operator_multiply" />
         <Button
             style="@style/OperatorButton"
-            android:clickable="false" />
+            android:id="@+id/button_clear"
+            android:text="@string/calculator_button_operator_clear" />
         <Button
             style="@style/NumericButton"
             android:id="@+id/button_number_one"

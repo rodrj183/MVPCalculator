@@ -16,7 +16,7 @@ public class CalculatorModel {
 
     private String cleanExpression(String mathExpression) {
         if (mathExpression.contains("×")) {
-            mathExpression = mathExpression.replace('×', 'x');
+            mathExpression = mathExpression.replace('×', '*');
         }
 
         if (mathExpression.contains("÷")) {
