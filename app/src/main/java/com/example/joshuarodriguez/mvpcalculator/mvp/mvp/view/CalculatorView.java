@@ -7,14 +7,12 @@ import android.widget.TextView;
 import com.example.joshuarodriguez.mvpcalculator.R;
 import com.example.joshuarodriguez.mvpcalculator.mvp.utils.Bus.BusEvents.CalculatorNumericButtonPressedEvent;
 import com.example.joshuarodriguez.mvpcalculator.mvp.utils.Bus.BusEvents.CalculatorOperatorButtonPressedEvent;
-import com.example.joshuarodriguez.mvpcalculator.mvp.utils.Bus.BusEvents.CalculatorOperatorButtonPressedLongEvent;
 import com.example.joshuarodriguez.mvpcalculator.mvp.utils.ViewUtil;
 import com.squareup.otto.Bus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnLongClick;
 
 public class CalculatorView extends ActivityView {
 
@@ -55,6 +53,7 @@ public class CalculatorView extends ActivityView {
     @BindView(R.id.button_subtract) Button mButtonSubtract;
     @BindView(R.id.button_delete) Button mButtonDelete;
     @BindView(R.id.button_equals) Button mButtonEquals;
+    @BindView(R.id.button_clear) Button mButtonClear;
 
     public CalculatorView(AppCompatActivity activity, Bus eventBus) {
         super(activity);
@@ -174,12 +173,11 @@ public class CalculatorView extends ActivityView {
         ));
     }
 
-    @OnLongClick(R.id.button_delete)
-    public boolean operatorButtonDeletePressedLong() {
-        eventBus.post(new CalculatorOperatorButtonPressedLongEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_operator_delete)
+    @OnClick(R.id.button_clear)
+    public void operatorButtonClearPressed() {
+        eventBus.post(new CalculatorOperatorButtonPressedEvent(
+                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_operator_clear)
         ));
-        return true;
     }
 
     @OnClick(R.id.button_equals)
@@ -199,6 +197,17 @@ public class CalculatorView extends ActivityView {
         if (currentInput.length() > 0) {
             CharSequence newInput = currentInput.subSequence(0, currentInput.length() - 1);
             mTextViewInputField.setText(newInput);
+        }
+    }
+
+    public void clearAndRevertFieldViewIfThereWasABadExpression() {
+        String inputFieldValue = mTextViewInputField.getText().toString();
+
+        if (inputFieldValue.equals(BAD_EXPRESSION)) {
+            mTextViewInputField.setText(EMPTY_TEXT);
+            mTextViewInputField.setTextColor(
+                    ViewUtil.getColorResourceValue(getActivity(), R.color.colorInputFieldNormal)
+            );
         }
     }
 
