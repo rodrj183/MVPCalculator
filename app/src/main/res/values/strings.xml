@@ -21,7 +21,6 @@
     <string name="calculator_button_operator_divide">÷</string>
     <string name="calculator_button_operator_subtract">-</string>
     <string name="calculator_button_operator_equals">=</string>
-    <string name="calculator_button_operator_clear">CLR</string>
     <string name="calculator_button_operator_delete">DEL</string>
 
 </resources>

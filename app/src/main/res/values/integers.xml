@@ -6,4 +6,7 @@
     <!-- Grid layout row count and column count -->
     <integer name="calculatorButtonGridLayoutRowCount">4</integer>
     <integer name="calculatorButtonGridLayoutColumnCount">5</integer>
+
+    <!-- Calculator input field max lines -->
+    <integer name="calculatorInputFieldMaxLines">1</integer>
 </resources>

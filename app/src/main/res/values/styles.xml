@@ -2,10 +2,6 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <!-- Base calculator button. -->
@@ -34,6 +30,15 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentBottom">@bool/calculatorButtonGridLayoutBottomAlignment</item>
+    </style>
+
+    <!-- Calculator input field layout style -->
+    <style name="CalculatorInputField">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/calculatorInputFieldLayoutHeight</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:textSize">@dimen/calculatorInputFieldTextSize</item>
     </style>
 
 </resources>

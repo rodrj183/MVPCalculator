@@ -6,4 +6,8 @@
     <dimen name="baseCalculatorButtonLayoutHeight">80dp</dimen>
     <dimen name="baseCalculatorButtonLayoutWidth">0dp</dimen>
 
+    <!-- Calculator input field dimensions -->
+    <dimen name="calculatorInputFieldLayoutHeight">60dp</dimen>
+    <dimen name="calculatorInputFieldTextSize">50sp</dimen>
+
 </resources>

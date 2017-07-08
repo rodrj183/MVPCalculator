@@ -11,4 +11,7 @@
     <color name="colorCalculatorNumericButton">#424242</color>
     <color name="colorCalculatorOperatorButton">#616161</color>
 
+    <!-- Calculator input field error text color -->
+    <color name="colorInputFieldError">#C2185B</color>
+
 </resources>
