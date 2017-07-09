@@ -216,6 +216,7 @@ public class CalculatorView extends ActivityView {
     public void setResult(String result) {
         if (!result.equals(NAN)) {
             mEditTextInputField.setText(result);
+            mEditTextInputField.setSelection(0);
         } else {
             mEditTextInputField.setText(BAD_EXPRESSION);
             mEditTextInputField.setTextColor(

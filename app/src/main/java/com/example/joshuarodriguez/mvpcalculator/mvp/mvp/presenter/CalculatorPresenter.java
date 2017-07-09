@@ -31,9 +31,8 @@ public class CalculatorPresenter {
 
     @Subscribe
     public void calculatorOperatorButtonPressed(CalculatorOperatorButtonPressedEvent event) {
-        calculatorView.clearAndRevertFieldViewIfThereWasABadExpression();
+        calculatorView.clearAndRevertFieldViewIfThereWasABadExpression();;
         determineCalculatorAction(event.getButtonValue());
-        calculatorView.alwaysShowLatestInputs();
     }
 
     private void determineCalculatorAction(String operatorPressed) {
@@ -47,6 +46,7 @@ public class CalculatorPresenter {
             calculatorView.setResult(result);
         } else {
             calculatorView.appendButtonValueToInputField(operatorPressed);
+            calculatorView.alwaysShowLatestInputs();
         }
     }
 }
