@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
+    <EditText
         style="@style/CalculatorInputField"
-        android:id="@+id/textview_input_field" />
+        android:id="@+id/edittext_input_field" />
 
     <GridLayout
         style="@style/CalculatorButtonsGrid"

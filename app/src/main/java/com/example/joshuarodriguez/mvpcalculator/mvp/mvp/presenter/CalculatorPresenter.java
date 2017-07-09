@@ -26,12 +26,14 @@ public class CalculatorPresenter {
     public void calculatorNumericButtonPressed(CalculatorNumericButtonPressedEvent event) {
         calculatorView.clearAndRevertFieldViewIfThereWasABadExpression();
         calculatorView.appendButtonValueToInputField(event.getButtonValue());
+        calculatorView.alwaysShowLatestInputs();
     }
 
     @Subscribe
     public void calculatorOperatorButtonPressed(CalculatorOperatorButtonPressedEvent event) {
         calculatorView.clearAndRevertFieldViewIfThereWasABadExpression();
         determineCalculatorAction(event.getButtonValue());
+        calculatorView.alwaysShowLatestInputs();
     }
 
     private void determineCalculatorAction(String operatorPressed) {
