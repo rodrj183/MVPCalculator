@@ -1,8 +1,9 @@
 package com.example.joshuarodriguez.mvpcalculator.mvp.mvp.view;
 
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import com.example.joshuarodriguez.mvpcalculator.R;
 import com.example.joshuarodriguez.mvpcalculator.mvp.utils.Bus.BusEvents.CalculatorNumericButtonPressedEvent;
@@ -27,7 +28,7 @@ public class CalculatorView extends ActivityView {
     /**
      * Binding input field from calculator view
      */
-    @BindView(R.id.textview_input_field) TextView mTextViewInputField;
+    @BindView(R.id.edittext_input_field) EditText mEditTextInputField;
 
     /**
      * Binding numeric buttons from calculator view
@@ -59,6 +60,7 @@ public class CalculatorView extends ActivityView {
         super(activity);
         this.eventBus = eventBus;
         ButterKnife.bind(this, activity);
+        hideKeyboard();
     }
 
     @OnClick(R.id.button_number_zero)
@@ -188,24 +190,24 @@ public class CalculatorView extends ActivityView {
     }
 
     public void appendButtonValueToInputField(String buttonValue) {
-        StringBuilder stringBuilder = new StringBuilder(mTextViewInputField.getText()).append(buttonValue);
-        mTextViewInputField.setText(stringBuilder.toString());
+        StringBuilder stringBuilder = new StringBuilder(mEditTextInputField.getText()).append(buttonValue);
+        mEditTextInputField.setText(stringBuilder.toString());
     }
 
     public void backSpaceCalculatorInputField() {
-        CharSequence currentInput = mTextViewInputField.getText();
+        CharSequence currentInput = mEditTextInputField.getText();
         if (currentInput.length() > 0) {
             CharSequence newInput = currentInput.subSequence(0, currentInput.length() - 1);
-            mTextViewInputField.setText(newInput);
+            mEditTextInputField.setText(newInput);
         }
     }
 
     public void clearAndRevertFieldViewIfThereWasABadExpression() {
-        String inputFieldValue = mTextViewInputField.getText().toString();
+        String inputFieldValue = mEditTextInputField.getText().toString();
 
         if (inputFieldValue.equals(BAD_EXPRESSION)) {
-            mTextViewInputField.setText(EMPTY_TEXT);
-            mTextViewInputField.setTextColor(
+            mEditTextInputField.setText(EMPTY_TEXT);
+            mEditTextInputField.setTextColor(
                     ViewUtil.getColorResourceValue(getActivity(), R.color.colorInputFieldNormal)
             );
         }
@@ -213,20 +215,29 @@ public class CalculatorView extends ActivityView {
 
     public void setResult(String result) {
         if (!result.equals(NAN)) {
-            mTextViewInputField.setText(result);
+            mEditTextInputField.setText(result);
+            mEditTextInputField.setSelection(0);
         } else {
-            mTextViewInputField.setText(BAD_EXPRESSION);
-            mTextViewInputField.setTextColor(
+            mEditTextInputField.setText(BAD_EXPRESSION);
+            mEditTextInputField.setTextColor(
                     ViewUtil.getColorResourceValue(getActivity(), R.color.colorInputFieldError)
             );
         }
     }
 
+    public void alwaysShowLatestInputs() {
+        mEditTextInputField.setSelection(mEditTextInputField.length());
+    }
+
     public String getCalculatorInputFieldValue() {
-        return mTextViewInputField.getText().toString();
+        return mEditTextInputField.getText().toString();
     }
 
     public void clearCalculatorInputField() {
-        mTextViewInputField.setText(EMPTY_TEXT);
+        mEditTextInputField.setText(EMPTY_TEXT);
+    }
+
+    private void hideKeyboard() {
+        mEditTextInputField.setInputType(InputType.TYPE_NULL);
     }
 }
