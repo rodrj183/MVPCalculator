@@ -1,15 +1,15 @@
 package com.example.joshuarodriguez.mvpcalculator.mvp.mvp.view;
 
+import android.support.annotation.ColorRes;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.joshuarodriguez.mvpcalculator.R;
-import com.example.joshuarodriguez.mvpcalculator.mvp.utils.Bus.BusEvents.CalculatorNumericButtonPressedEvent;
-import com.example.joshuarodriguez.mvpcalculator.mvp.utils.Bus.BusEvents.CalculatorOperatorButtonPressedEvent;
-import com.example.joshuarodriguez.mvpcalculator.mvp.utils.ViewUtil;
-import com.squareup.otto.Bus;
+import com.example.joshuarodriguez.mvpcalculator.mvp.utils.RxBus.Observers.NumericButtonPressedObserver;
+import com.example.joshuarodriguez.mvpcalculator.mvp.utils.RxBus.Observers.OperatorButtonPressedObserver;
+import com.example.joshuarodriguez.mvpcalculator.mvp.utils.RxBus.RxBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,221 +23,186 @@ public class CalculatorView extends ActivityView {
     private static final String BAD_EXPRESSION = "Bad expression";
     private static final String NAN = "NaN";
 
-    private final Bus eventBus;
-
     /**
      * Binding input field from calculator view
      */
-    @BindView(R.id.edittext_input_field) EditText mEditTextInputField;
+    @BindView(R.id.edittext_input_field) EditText editTextInputField;
 
     /**
      * Binding numeric buttons from calculator view
      */
-    @BindView(R.id.button_number_zero) Button mButtonZero;
-    @BindView(R.id.button_number_one) Button mButtonOne;
-    @BindView(R.id.button_number_two) Button mButtonTwo;
-    @BindView(R.id.button_number_three) Button mButtonThree;
-    @BindView(R.id.button_number_four) Button mButtonFour;
-    @BindView(R.id.button_number_five) Button mButtonFive;
-    @BindView(R.id.button_number_six) Button mButtonSix;
-    @BindView(R.id.button_number_seven) Button mButtonSeven;
-    @BindView(R.id.button_number_eight) Button mButtonEight;
-    @BindView(R.id.button_number_nine) Button mButtonNine;
-    @BindView(R.id.button_decimal) Button mButtonDecimal;
+    @BindView(R.id.button_number_zero) android.widget.Button buttonZero;
+    @BindView(R.id.button_number_one) android.widget.Button buttonOne;
+    @BindView(R.id.button_number_two) android.widget.Button buttonTwo;
+    @BindView(R.id.button_number_three) android.widget.Button buttonThree;
+    @BindView(R.id.button_number_four) android.widget.Button buttonFour;
+    @BindView(R.id.button_number_five) android.widget.Button buttonFive;
+    @BindView(R.id.button_number_six) android.widget.Button buttonSix;
+    @BindView(R.id.button_number_seven) android.widget.Button buttonSeven;
+    @BindView(R.id.button_number_eight) android.widget.Button buttonEight;
+    @BindView(R.id.button_number_nine) android.widget.Button buttonNine;
+    @BindView(R.id.button_decimal) android.widget.Button buttonDecimal;
 
     /**
      * Binding operator buttons from calculator view
      */
-    @BindView(R.id.button_addition) Button mButtonAddition;
-    @BindView(R.id.button_multiply) Button mButtonMultiply;
-    @BindView(R.id.button_divide) Button mButtonDivide;
-    @BindView(R.id.button_subtract) Button mButtonSubtract;
-    @BindView(R.id.button_delete) Button mButtonDelete;
-    @BindView(R.id.button_equals) Button mButtonEquals;
-    @BindView(R.id.button_clear) Button mButtonClear;
+    @BindView(R.id.button_addition) android.widget.Button buttonAddition;
+    @BindView(R.id.button_multiply) android.widget.Button buttonMultiply;
+    @BindView(R.id.button_divide) android.widget.Button buttonDivide;
+    @BindView(R.id.button_subtract) android.widget.Button buttonSubtract;
+    @BindView(R.id.button_delete) android.widget.Button buttonDelete;
+    @BindView(R.id.button_equals) android.widget.Button buttonEquals;
+    @BindView(R.id.button_clear) android.widget.Button buttonClear;
 
-    public CalculatorView(AppCompatActivity activity, Bus eventBus) {
+    public CalculatorView(AppCompatActivity activity) {
         super(activity);
-        this.eventBus = eventBus;
         ButterKnife.bind(this, activity);
-        hideKeyboard();
     }
 
     @OnClick(R.id.button_number_zero)
     public void numericButtonZeroPressed() {
-        eventBus.post(new CalculatorNumericButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_value_zero)
-        ));
+        RxBus.post(NumericButtonPressedObserver.NumericButton.Number.ZERO);
     }
 
     @OnClick(R.id.button_number_one)
     public void numericButtonOnePressed() {
-        eventBus.post(new CalculatorNumericButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_value_one)
-        ));
+        RxBus.post(NumericButtonPressedObserver.NumericButton.Number.ONE);
     }
 
     @OnClick(R.id.button_number_two)
     public void numericButtonTwoPressed() {
-        eventBus.post(new CalculatorNumericButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_value_two)
-        ));
+        RxBus.post(NumericButtonPressedObserver.NumericButton.Number.TWO);
     }
 
     @OnClick(R.id.button_number_three)
     public void numericButtonThreePressed() {
-        eventBus.post(new CalculatorNumericButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_value_three)
-        ));
+        RxBus.post(NumericButtonPressedObserver.NumericButton.Number.THREE);
     }
 
     @OnClick(R.id.button_number_four)
     public void numericButtonFourPressed() {
-        eventBus.post(new CalculatorNumericButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_value_four)
-        ));
+        RxBus.post(NumericButtonPressedObserver.NumericButton.Number.FOUR);
     }
 
     @OnClick(R.id.button_number_five)
     public void numericButtonFivePressed() {
-        eventBus.post(new CalculatorNumericButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_value_five)
-        ));
+        RxBus.post(NumericButtonPressedObserver.NumericButton.Number.FIVE);
     }
 
     @OnClick(R.id.button_number_six)
     public void numericButtonSixPressed() {
-        eventBus.post(new CalculatorNumericButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_value_six)
-        ));
+        RxBus.post(NumericButtonPressedObserver.NumericButton.Number.SIX);
     }
 
     @OnClick(R.id.button_number_seven)
     public void numericButtonSevenPressed() {
-        eventBus.post(new CalculatorNumericButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_value_seven)
-        ));
+        RxBus.post(NumericButtonPressedObserver.NumericButton.Number.SEVEN);
     }
 
     @OnClick(R.id.button_number_eight)
     public void numericButtonEightPressed() {
-        eventBus.post(new CalculatorNumericButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_value_eight)
-        ));
+        RxBus.post(NumericButtonPressedObserver.NumericButton.Number.EIGHT);
     }
 
     @OnClick(R.id.button_number_nine)
     public void numericButtonNinePressed() {
-        eventBus.post(new CalculatorNumericButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_value_nine)
-        ));
+        RxBus.post(NumericButtonPressedObserver.NumericButton.Number.NINE);
     }
 
     @OnClick(R.id.button_decimal)
     public void numericButtonDecimalPressed() {
-        eventBus.post(new CalculatorNumericButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_decimal)
-        ));
+        RxBus.post(NumericButtonPressedObserver.NumericButton.Number.DECIMAL);
     }
 
     @OnClick(R.id.button_addition)
     public void operatorButtonAdditionPressed() {
-        eventBus.post(new CalculatorOperatorButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_operator_add)
-        ));
+        RxBus.post(OperatorButtonPressedObserver.OperatorButton.Operator.ADDITION);
     }
 
     @OnClick(R.id.button_subtract)
     public void operatorButtonSubtractionPressed() {
-        eventBus.post(new CalculatorOperatorButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_operator_subtract)
-        ));
+        RxBus.post(OperatorButtonPressedObserver.OperatorButton.Operator.SUBTRACTION);
     }
 
     @OnClick(R.id.button_divide)
     public void operatorButtonDivisionPressed() {
-        eventBus.post(new CalculatorOperatorButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_operator_divide)
-        ));
+        RxBus.post(OperatorButtonPressedObserver.OperatorButton.Operator.DIVISION);
     }
 
     @OnClick(R.id.button_multiply)
     public void operatorButtonMultiplicationPressed() {
-        eventBus.post(new CalculatorOperatorButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_operator_multiply)
-        ));
+        RxBus.post(OperatorButtonPressedObserver.OperatorButton.Operator.MULTIPLICATION);
     }
 
     @OnClick(R.id.button_delete)
     public void operatorButtonDeletePressed() {
-        eventBus.post(new CalculatorOperatorButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_operator_delete)
-        ));
+        RxBus.post(OperatorButtonPressedObserver.OperatorButton.Operator.DELETE);
     }
 
     @OnClick(R.id.button_clear)
     public void operatorButtonClearPressed() {
-        eventBus.post(new CalculatorOperatorButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_operator_clear)
-        ));
+        RxBus.post(OperatorButtonPressedObserver.OperatorButton.Operator.CLEAR);
     }
 
     @OnClick(R.id.button_equals)
     public void operatorButtonEqualsPressed() {
-        eventBus.post(new CalculatorOperatorButtonPressedEvent(
-                ViewUtil.getStringResourceValue(getActivity(), R.string.calculator_button_operator_equals)
-        ));
+        RxBus.post(OperatorButtonPressedObserver.OperatorButton.Operator.EQUALS);
     }
 
     public void appendButtonValueToInputField(String buttonValue) {
-        StringBuilder stringBuilder = new StringBuilder(mEditTextInputField.getText()).append(buttonValue);
-        mEditTextInputField.setText(stringBuilder.toString());
+        StringBuilder stringBuilder = new StringBuilder(editTextInputField.getText()).append(buttonValue);
+        editTextInputField.setText(stringBuilder.toString());
     }
 
     public void backSpaceCalculatorInputField() {
-        CharSequence currentInput = mEditTextInputField.getText();
+        CharSequence currentInput = editTextInputField.getText();
         if (currentInput.length() > 0) {
             CharSequence newInput = currentInput.subSequence(0, currentInput.length() - 1);
-            mEditTextInputField.setText(newInput);
+            editTextInputField.setText(newInput);
         }
     }
 
     public void clearAndRevertFieldViewIfThereWasABadExpression() {
-        String inputFieldValue = mEditTextInputField.getText().toString();
+        String inputFieldValue = editTextInputField.getText().toString();
 
         if (inputFieldValue.equals(BAD_EXPRESSION)) {
-            mEditTextInputField.setText(EMPTY_TEXT);
-            mEditTextInputField.setTextColor(
-                    ViewUtil.getColorResourceValue(getActivity(), R.color.colorInputFieldNormal)
+            editTextInputField.setText(EMPTY_TEXT);
+            editTextInputField.setTextColor(
+                    getColorResourceValue(R.color.colorInputFieldNormal)
             );
         }
     }
 
     public void setResult(String result) {
         if (!result.equals(NAN)) {
-            mEditTextInputField.setText(result);
-            mEditTextInputField.setSelection(0);
+            editTextInputField.setText(result);
+            editTextInputField.setSelection(0);
         } else {
-            mEditTextInputField.setText(BAD_EXPRESSION);
-            mEditTextInputField.setTextColor(
-                    ViewUtil.getColorResourceValue(getActivity(), R.color.colorInputFieldError)
+            editTextInputField.setText(BAD_EXPRESSION);
+            editTextInputField.setTextColor(
+                    getColorResourceValue(R.color.colorInputFieldError)
             );
         }
     }
 
     public void alwaysShowLatestInputs() {
-        mEditTextInputField.setSelection(mEditTextInputField.length());
+        editTextInputField.setSelection(editTextInputField.length());
     }
 
     public String getCalculatorInputFieldValue() {
-        return mEditTextInputField.getText().toString();
+        return editTextInputField.getText().toString();
     }
 
     public void clearCalculatorInputField() {
-        mEditTextInputField.setText(EMPTY_TEXT);
+        editTextInputField.setText(EMPTY_TEXT);
     }
 
-    private void hideKeyboard() {
-        mEditTextInputField.setInputType(InputType.TYPE_NULL);
+    public void hideKeyboard() {
+        editTextInputField.setInputType(InputType.TYPE_NULL);
+    }
+
+    private int getColorResourceValue(@ColorRes int colorResourceId) {
+        AppCompatActivity activity = getActivity();
+        return (activity != null) ? ContextCompat.getColor(activity, colorResourceId) : 0;
     }
 }
